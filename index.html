@@ -191,43 +191,42 @@ body {
   <div class="section">
   <div class="section-title">教育背景</div>
   <div class="edu-row">
-    <div class="edu-left"><span class="edu-school">攀枝花学院</span><span class="edu-detail">&nbsp;|&nbsp;电子信息工程 | 本科 | 专业排名 3/94；四川省级优秀毕业生</span></div>
+    <div class="edu-left"><span class="edu-school">攀枝花学院</span><span class="edu-detail">&nbsp;|&nbsp;电子信息工程 | 本科 | 专业排名 3/94</span></div>
     <span class="edu-date">2021.09 ~ 2025.07</span>
   </div>
-  <div class="edu-courses">● 主修课程：数字图像处理、人工智能、C 语言程序设计、通信原理</div>
+  
 </div>
   <div class="section">
   <div class="section-title">项目经验</div>
   <div class="exp-header">
-    <div class="exp-left"><span class="exp-company">学习笔记智能问答助手</span><span class="exp-role">个人项目</span></div>
+    <div class="exp-left"><span class="exp-company">DeepResearch 多智能体研究系统</span><span class="exp-role">LangGraph / Agent 编排 · 代码可提供</span></div>
+    <span class="exp-date">2026.09 ~ 至今</span>
+  </div>
+  <ul class="bullet-list">
+<li><span class="bullet-label">工作流编排：</span>使用 LangGraph 串联 Plan、Research、Writer 三阶段，Research 与 Writer 通过独立子图管理各自的循环与退出条件。</li>
+<li><span class="bullet-label">并行与容错：</span>使用 Send API 并行派发搜索任务，通过 reducer 合并任务结果；区分可重试与不可重试异常，避免单路任务失败直接中断整体流程。</li>
+<li><span class="bullet-label">任务与流式输出：</span>使用 Redis Streams 消费组管理任务与事件，支持暂停、续跑及按事件 ID 恢复读取；通过 SSE 向前端推送模型 Token 与图执行事件。</li>
+<li><span class="bullet-label">状态与可靠性：</span>通过 checkpointer 持久化工作流状态，支持 HITL 人工介入；统一处理 LLM、MCP 与知识库链路的异常分类和重试策略。</li>
+<li><span class="bullet-label">测试与交付：</span>执行 300 项自动化测试，296 项通过、4 项跳过；接入 GitHub Actions CI，并验证 Docker 环境中的 Redis Streams 消费组全链路。</li>
+  </ul>
+  <div class="exp-header">
+    <div class="exp-left"><span class="exp-company">学习笔记智能问答助手</span><span class="exp-role">RAG / 个人项目 · 代码可提供</span></div>
     <span class="exp-date">2026.08 ~ 2026.09</span>
   </div>
   <ul class="bullet-list">
-<li>独立完成设计、开发与 12 次迭代提交（Git 历史可查）</li>
-<li><span class="bullet-label">索引：</span>内容指纹与索引重建：启动时比对笔记指纹，变化时自动重建向量库，避免陈旧索引</li>
-<li><span class="bullet-label">防幻觉：</span>由大模型判定召回内容是否足以回答，不足时明确拒答，不编造</li>
-<li><span class="bullet-label">路由与引用：</span>闲聊不触发检索；回答末尾列出实际引用的笔记文件</li>
-<li><span class="bullet-label">成绩：</span>沉淀 592 行踩坑复盘（24 个问题，按「现象→原因→修复→教训」整理）</li>
+<li><span class="bullet-label">RAG 全链路：</span>笔记切分 → 向量化（Chroma）→ 向量检索 → 生成；回答带来源引用，可追溯到原始笔记</li>
+<li><span class="bullet-label">防幻觉：</span>由 LLM 判定召回内容是否足以回答，不足时明确拒答；意图路由使闲聊不触发检索，降低无效模型调用</li>
+<li><span class="bullet-label">后端：</span>FastAPI + Uvicorn 提供接口，asyncio 异步调用模型；命令行与 Web 两种入口</li>
+<li><span class="bullet-label">迭代：</span>独立完成 12 次迭代提交，沉淀 592 行踩坑复盘（24 个问题，按「现象→原因→修复→教训」整理）</li>
   </ul>
   <div class="exp-header">
-    <div class="exp-left"><span class="exp-company">DeepResearch 系统</span><span class="exp-role"></span></div>
+    <div class="exp-left"><span class="exp-company">零售数据分析 Agent（DataPilot）</span><span class="exp-role">工具调用 / 个人项目 · 进行中</span></div>
     <span class="exp-date">2026.09 ~ 至今</span>
   </div>
   <ul class="bullet-list">
-<li>Plan / Research / Writer 三阶段由 LangGraph 编排，含并行搜索、暂停续跑与 SSE 流式输出</li>
-<li>跑通全量测试（300 个测试函数，296 通过 / 4 跳过）；接入 GitHub Actions CI</li>
-<li>自行装通 Docker Desktop 与 Redis，手动验证 Redis Streams 消费组全链路</li>
-<li>梳理并实践：Send 扇出、reducer 合并、checkpointer、HITL；异常分层与退避重试；Milvus 四档生命周期</li>
-  </ul>
-  <div class="exp-header">
-    <div class="exp-left"><span class="exp-company">零售数据分析 Agent（DataPilot）</span><span class="exp-role">个人项目 · 进行中</span></div>
-    <span class="exp-date">2026.09 ~ 至今</span>
-  </div>
-  <ul class="bullet-list">
-<li>清洗 106.7 万行数据：xlsx→CSV 读取 40s→1s；合并去重后 1,044,848 行</li>
-<li>CSV→SQLite 入库对账；手写 SQL 回答业务问题并产出验收文档</li>
-<li>封装 get_schema / run_sql 工具（只读校验、限行、错误原样返回留痕）</li>
-<li>进行中：接入 function calling，让模型自主调用并基于 SQL 报错自我修正</li>
+<li><span class="bullet-label">数据处理：</span>清洗约 106.7 万行零售数据，完成数据合并、去重，并将 1,044,848 行写入 SQLite；通过数据量与关键字段核对验证入库结果。</li>
+<li><span class="bullet-label">工具封装：</span>封装 get_schema / run_sql，增加只读校验、结果行数限制与错误记录，便于追踪 SQL 执行问题。</li>
+<li><span class="bullet-label">Agent 能力（进行中）：</span>接入 Function Calling，让模型调用受限 SQL 工具查询业务数据，并尝试依据 SQL 执行错误修正查询；通过调用次数上限避免无限循环。</li>
   </ul>
 </div>
 <div class="section">
@@ -248,42 +247,25 @@ body {
 <li>配合电工及电气工程师，对车间设备电路及 PLC 进行检修与维护</li>
   </ul>
 </div>
-<div class="section">
-  <div class="section-title">校园经历</div>
-  <div class="exp-header">
-    <div class="exp-left"><span class="exp-company">攀枝花学院</span><span class="exp-role">班长</span></div>
-    <span class="exp-date">2022.01 ~ 2025.06</span>
-  </div>
-  <ul class="bullet-list">
-<li>组织班级活动与例会，负责会议记录、流程管理及效果评估；负责奖助学金评选的组织与公示</li>
-  </ul>
-  <div class="exp-header">
-    <div class="exp-left"><span class="exp-company">电子爱好者协会</span><span class="exp-role">组织部部长</span></div>
-    <span class="exp-date">2022.07 ~ 2023.06</span>
-  </div>
-  <ul class="bullet-list">
-<li>策划组织讲座、交流会与实践活动，制定计划、协调资源并跟进执行</li>
-  </ul>
-</div>
   <div class="section">
   <div class="section-title">获奖情况</div>
   <ul class="bullet-list">
-<li>荣誉：四川省级优秀毕业生、攀枝花学院奖学金、“三下乡”优秀个人、三好学生</li>
-<li>证书：英语 CET-4、C 语言计算机二级、初级电工证</li>
-<li>竞赛：新一代信息技术领域专项赛三等奖</li>
+<li>荣誉与证书：四川省级优秀毕业生、校奖学金、三好学生、“三下乡”优秀个人；CET-4、C 语言计算机二级、初级电工证</li>
+<li>竞赛与学生工作：新一代信息技术领域专项赛三等奖；班长（2022.01-2025.06）、电子爱好者协会组织部部长（2022.07-2023.06）</li>
   </ul>
 </div>
   <div class="section">
   <div class="section-title">岗位技能</div>
   <div class="skill-item"><span class="skill-label">语言：</span>熟练使用 Python；C 语言（计算机二级）；了解 SQL</div>
-  <div class="skill-item"><span class="skill-label">AI 应用：</span>熟练使用 LangGraph、LangChain（独立完成两个项目）；熟悉 RAG 全链路、Prompt 工程、Function Calling</div>
-  <div class="skill-item"><span class="skill-label">后端：</span>熟练使用 FastAPI、Uvicorn、asyncio 异步编程、SSE 流式输出</div>
-  <div class="skill-item"><span class="skill-label">数据与中间件：</span>熟悉 Redis（Streams 消费组）、SQLite、pandas</div>
-  <div class="skill-item"><span class="skill-label">工程工具：</span>熟悉 Git、pytest；了解 Docker、GitHub Actions</div>
+  <div class="skill-item"><span class="skill-label">LLM 应用：</span>LangChain / LangGraph（子图、Send 扇出、reducer、checkpointer、HITL）；RAG 全链路（切分 / 向量化 / 向量检索 / 来源引用 / 防幻觉）；Prompt 工程；Function Calling</div>
+  <div class="skill-item"><span class="skill-label">后端：</span>FastAPI、Uvicorn、RESTful API、asyncio 异步编程、SSE 流式输出</div>
+  <div class="skill-item"><span class="skill-label">数据与中间件：</span>Redis（Streams 消费组）、SQLite / SQL；了解 Milvus、MySQL</div>
+  <div class="skill-item"><span class="skill-label">工程：</span>Git、pytest（分层测试 / Mock / 异步测试）、GitHub Actions；了解 Docker</div>
+  <div class="skill-item"><span class="skill-label">AI 编程：</span>日常使用 Codex、DSH 等 AI 编程工具辅助开发、调试与文档整理</div>
 </div>
   <div class="section">
   <div class="section-title">自我评价</div>
-  <div class="self-evaluation">电子信息工程背景，毕业后在通信与电气岗位积累一线工程经验，2026 年起系统转向 AI 应用开发：独立完成两个项目，并深度实践一个多智能体系统。习惯把问题拆到机制层面，重视测试与异常处理；对 Agent 编排与 RAG 有持续投入，能讲清设计取舍，可快速上手业务落地。</div>
+  <div class="self-evaluation">电子信息工程背景，2026 年起全职转向 AI 应用开发：深度实践一个 LangGraph 多智能体系统（并行扇出、异步队列、流式输出、异常分层），并独立完成 RAG 问答与数据分析 Agent 两个项目。习惯把问题拆到机制层面、先看清场景再选方案，重视测试与异常处理，能把技术方案讲成业务方听得懂的话。</div>
 </div>
 </div>
 <script>
